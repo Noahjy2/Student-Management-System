@@ -69,6 +69,10 @@ public class StudentManager{
 
 
     public void displayAllStudent(){ 
+        if (students.isEmpty()){
+            System.out.println("No student found.");
+            return;
+        }
 
         System.out.print("""
                 ===================================================
