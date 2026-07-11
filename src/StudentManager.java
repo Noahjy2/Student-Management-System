@@ -80,7 +80,7 @@ public class StudentManager{
                 ===================================================
                 """);
         for (Student student : students){
-            System.out.printf("%-8s %-24s %-7d %-6.2f\n",student.getId(),student.getName(),student.getAge(), student.getCgpa());
+            System.out.printf("%-8s %-24s %-7d %-6.4f\n",student.getId(),student.getName(),student.getAge(), student.getCgpa());
         }
     }
 }
