@@ -6,8 +6,8 @@ public class MainConsole{
         StudentManager manager = new StudentManager();
 
         //Test
-        manager.addStudent("000001", "Alisa Cha", 19, 3.12);
-        manager.addStudent("000002", "Bobby Tan", 21, 2.92);
+        manager.addStudent("000001", "Alisa Cha", 19, 3.1288);
+        manager.addStudent("000002", "Bobby Tan", 21, 2.9223);
 
 
         System.out.println("""
@@ -34,8 +34,8 @@ public class MainConsole{
                 case "1" -> manager.displayAllStudent();
                 case "2" -> searchStudent(manager, scanner);
                 case "3" -> addNewStudent(manager, scanner);
-                case "4" -> System.out.println("Remove student by ID");
-                case "5" -> System.out.println("Update Student information by ID");
+                case "4" -> deleteStudent(manager, scanner);
+                case "5" -> updateStudentInformation(manager, scanner);
                 case "6" -> System.out.println("Thanks for using the system");
                 default -> System.out.println("Invalid choice!");
             }
@@ -81,5 +81,50 @@ public class MainConsole{
         double cgpa = scanner.nextDouble();
         
         manager.addStudent(id, name, age, cgpa);
+    }
+
+    public static void deleteStudent(StudentManager manager, Scanner scanner){
+        System.out.println("Enter student ID: ");
+        String id = scanner.nextLine();
+
+        manager.removeStudent(id);
+    }
+
+    public static void updateStudentInformation(StudentManager manager, Scanner scanner){
+        System.out.print("Enter student ID: ");
+        String id = scanner.nextLine();
+
+        Student checkStudent = manager.findStudent(id);
+        if (checkStudent == null){
+            System.out.println("Student not Found.");
+            return;
+        }
+
+        System.out.print("""
+        1. ID
+        2. Name
+        3. Age
+        4. CGPA
+        5. Back to Main Menu
+        """);
+        System.out.print("Enter field to change (1-5): ");
+        String choice = scanner.nextLine();
+
+        if (choice.equals("5")){
+            return;
+        }
+
+        String option = "";
+        switch (choice){
+            case "1" -> option = "id";
+            case "2" -> option = "name";
+            case "3" -> option = "age";
+            case "4" -> option = "cgpa";
+        }
+
+        System.out.printf("Enter new value for %s : ", option);
+        String newValue = scanner.nextLine();
+        
+        manager.updateStudent(id, option, newValue);
     }
 }
