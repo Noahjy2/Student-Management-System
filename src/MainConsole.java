@@ -10,7 +10,7 @@ public class MainConsole{
         manager.addStudent("000002", "Bobby Tan", 21, 2.9223);
 
 
-        System.out.println("""
+        System.out.print("""
         =============================
           STUDENT MANAGEMENT SYSTEM
         =============================
