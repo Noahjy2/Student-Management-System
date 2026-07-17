@@ -18,7 +18,6 @@ A simple Student Management System built with Java to practice Object-Oriented P
 - Java
 - OOP
 - Scanner
-- IO
 
 
 ## Project Structure
